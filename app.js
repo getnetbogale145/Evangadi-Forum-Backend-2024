@@ -5,43 +5,45 @@ const cors = require("cors");
 const app = express();
 const port = 5500;
 
+// Configure CORS middleware
 app.use(
   cors({
-    // origin: true,
     origin: "https://evangadi-forum-getnet.netlify.app",
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
   })
 );
 
-// db connection
+// DB connection
 const dbConnection = require("./db/dbConfig");
 
-// user routes middleware file
+// User routes middleware file
 const userRoutes = require("./routes/userRoute");
 
-// questions routes middleware file
+// Questions routes middleware file
 const questionsRoutes = require("./routes/questionRoute");
 
-// answers routes middleware file
+// Answers routes middleware file
 const answerRoutes = require("./routes/answerRoute");
 
-// authentication Middleware file
+// Authentication middleware file
 const authMiddleware = require("./middleware/authMiddleWare");
 
-// Json middleware to extract json data
+// JSON middleware to extract JSON data
 app.use(express.json());
 
 // Welcome route
 app.get("/", (req, res) => {
-  res.send(`Welcome to the Evangadi-Forum APP`);
+  res.send("Welcome to the Evangadi-Forum APP");
 });
 
-// user routes middleware
+// User routes middleware
 app.use("/api/users", userRoutes);
 
-// question routes middleware
+// Question routes middleware
 app.use("/api/questions", authMiddleware, questionsRoutes);
 
-// answer routes middleware
+// Answer routes middleware
 app.use("/api/answers", authMiddleware, answerRoutes);
 
 async function start() {
