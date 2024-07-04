@@ -9,6 +9,8 @@ app.use(
   cors({
     // origin: true,
     origin: "https://evangadi-forum-getnet.netlify.app",
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
   })
 );
 
