@@ -1,2 +1,3 @@
-node_modules
+# remove from the git
 .env
+node_modules
