@@ -24,4 +24,11 @@ router.post('/reset/update',reset)
 //todo check user
 router.get('/check',authMiddleWare ,checkUser)
 
+router.get('/home', (req, res) => {
+    // Handle the request for /home
+    res.send('Welcome to the home page');
+});
+
+
+
 module.exports = router
