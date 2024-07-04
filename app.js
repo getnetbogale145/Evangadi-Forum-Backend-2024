@@ -43,6 +43,8 @@ app.use("/api/questions", authMiddleware, questionsRoutes);
 // answer routes middleware
 app.use("/api/answers", authMiddleware, answerRoutes);
 
+
+// updated my
 async function start() {
   try {
     const result = await dbConnection.query("SELECT 'test'");
