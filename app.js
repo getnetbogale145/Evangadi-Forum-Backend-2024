@@ -45,13 +45,16 @@ app.use("/api/answers", authMiddleware, answerRoutes);
 
 async function start() {
   try {
-    const result = await dbConnection.execute("Select 'test' ");
+    const result = await dbConnection.query("SELECT 'test'");
     await app.listen(port, () => {
       console.log("Server is listening at port 5500");
     });
     console.log("Database connection established");
   } catch (error) {
-    console.error("Error starting server:", error);
+    console.error("Error starting server:", error.message);
+    if (error.code === 'ECONNREFUSED') {
+      console.error('Database connection was refused. Please check if the database server is running.');
+    }
   }
 }
 
