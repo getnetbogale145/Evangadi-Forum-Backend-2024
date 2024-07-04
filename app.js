@@ -7,7 +7,8 @@ const port = 5500;
 const cors = require("cors");
 app.use(
   cors({
-    origin: true,
+    // origin: true,
+    origin: "https://evangadi-forum-getnet.netlify.app",
   })
 );
 
