@@ -1,16 +1,14 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = 5500;
 
-const cors = require("cors");
 app.use(
   cors({
     // origin: true,
     origin: "https://evangadi-forum-getnet.netlify.app",
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization",
   })
 );
 
